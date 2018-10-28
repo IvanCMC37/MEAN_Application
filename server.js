@@ -1,7 +1,7 @@
 const express = require('express'),
     stylus = require('stylus'),
     logger = require('morgan'),
-    bodyParser =  require('body-parser');
+    bodyParser = require('body-parser');
 
 // set develop env
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -26,16 +26,15 @@ app.use(bodyParser.json());
 // configure the stylus middleware
 app.use(stylus.middleware(
     {
-        src: __dirname + 'public',
+        src: __dirname + '/public',
         compile: compile
     }
 ));
 
 app.use(express.static(__dirname + '/public'));
 
-
 // route for webpage
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.render('index');
 })
 
