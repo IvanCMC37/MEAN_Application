@@ -33,10 +33,14 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/partials/:partialPath', function(req, res) {
+    res.render('partials/' + req.params.partialPath);
+});
+
 // route for webpage
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
     res.render('index');
-})
+});
 
 const port = 5000;
 app.listen(port);
