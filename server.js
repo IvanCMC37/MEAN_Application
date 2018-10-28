@@ -34,11 +34,24 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 
+// connect to mongodb
 mongoose.connect('mongodb://localhost/meanapplication', { useNewUrlParser: true});
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
     console.log('meanapplication db opened');
+});
+
+// create schema for db
+const messageSchema = mongoose.Schema({message: String});
+
+// create model base on schema
+var Message = mongoose.model('Message', messageSchema);
+
+// pull data out of db
+var mongoMessage;
+Message.findOne().exec(function(err, messageDoc) {
+    mongoMessage = messageDoc.message;
 });
 
 app.get('/partials/:partialPath', function(req, res) {
@@ -47,7 +60,9 @@ app.get('/partials/:partialPath', function(req, res) {
 
 // route for webpage
 app.get('*', function(req, res) {
-    res.render('index');
+    res.render('index', {
+        mongoMessage: mongoMessage
+    });
 });
 
 const port = 5000;
