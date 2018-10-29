@@ -47,17 +47,17 @@ db.once('open', function callback() {
     console.log('meanapplication db opened');
 });
 
-// create schema for db
-const messageSchema = mongoose.Schema({message: String});
+// // create schema for db
+// const messageSchema = mongoose.Schema({message: String});
 
-// create model base on schema
-var Message = mongoose.model('Message', messageSchema);
+// // create model base on schema
+// var Message = mongoose.model('Message', messageSchema);
 
-// pull data out of db
-var mongoMessage;
-Message.findOne().exec(function(err, messageDoc) {
-    mongoMessage = messageDoc.message;
-});
+// // pull data out of db
+// var mongoMessage;
+// Message.findOne().exec(function(err, messageDoc) {
+//     mongoMessage = messageDoc.message;
+// });
 
 app.get('/partials/:partialPath', function(req, res) {
     res.render('partials/' + req.params.partialPath);
@@ -65,9 +65,7 @@ app.get('/partials/:partialPath', function(req, res) {
 
 // route for webpage
 app.get('*', function(req, res) {
-    res.render('index', {
-        mongoMessage: mongoMessage
-    });
+    res.render('index');
 });
 
 const port = 5000;
