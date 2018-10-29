@@ -1,2 +1,12 @@
-h1 This is a partial
-h2 {{ myVar}}
+// Put every thing inside container
+.container
+  .jumbotron
+    h1 Technology For Life
+    p Welcome to Technology For Life! The most comprehensive and complete collection of extreme technology training videos on the web.
+  
+  // make space by creating a row
+  .row
+    .col-md-6
+      div(ng-include="'/partials/featured-courses'")
+    .col-md-6
+      div(ng-include="'/partials/new-courses'")
