@@ -35,7 +35,12 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/meanapplication', { useNewUrlParser: true});
+if(env ==='development') {
+    mongoose.connect('mongodb://localhost/meanapplication', { useNewUrlParser: true});
+} else {
+    mongoose.connect('mongodb://kskks:jcu1s23@18.218.105.153:27017/meanapplication', { useNewUrlParser: true});
+}
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
