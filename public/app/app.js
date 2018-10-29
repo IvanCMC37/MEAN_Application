@@ -8,5 +8,5 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 
     // define route
     $routeProvider
-        .when('/', { templateUrl: '/partials/main', controller: 'mvMainCtrl'});
+        .when('/', { templateUrl: '/partials/main/main', controller: 'mvMainCtrl'});
 });
