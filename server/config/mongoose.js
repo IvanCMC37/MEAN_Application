@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
- crypto = require('crypto');
+    crypto = require('crypto');
 
 module.exports =function(config){
     // connect to mongodb
