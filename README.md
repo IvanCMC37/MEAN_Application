@@ -1,6 +1,7 @@
 # MEAN Stack application
 
 Building a web application with M(MongoDB) E(Express) A(AngularJS) N(Node)
+![alt text](https://i.imgur.com/ogW0sOf.png)
 
 ## Getting Started
 
