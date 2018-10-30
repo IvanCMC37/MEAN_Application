@@ -2,6 +2,9 @@
 const express = require('express'),
     stylus = require('stylus'),
     logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    passport = require('passport'),
     bodyParser = require('body-parser');
 
 module.exports = function(app, config){
@@ -17,8 +20,12 @@ module.exports = function(app, config){
     // import logger
     app.use(logger('dev'));
 
+    app.use(cookieParser());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
+    app.use(session({secret: 'multi vision unicorns',resave:false,saveUninitialized:false}));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     // configure the stylus middleware
     app.use(stylus.middleware(
