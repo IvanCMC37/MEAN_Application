@@ -48,10 +48,6 @@ forever start server.js
 
 * **Ivan Chan**  - [IvanCMC37](https://github.com/IvanCMC37)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * Inspiration - MEAN Stack tutorial from [Pluralsight](https://app.pluralsight.com/library/)
