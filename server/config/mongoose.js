@@ -15,7 +15,8 @@ module.exports =function(config){
         lastName: String,
         username: String,
         salt: String,
-        hashed_pwd: String
+        hashed_pwd: String,
+        roles: [String]
     });
 
     userSchema.methods = {
@@ -30,17 +31,16 @@ module.exports =function(config){
         if(collection.length === 0) {
             var salt, hash;
             salt = createSalt();
-            hash = hashPwd(salt, 'joe');
-            User.create({firstName:'Joe',lastName:'Eames',username:'joe', salt: salt, hashed_pwd: hash});
+            hash = hashPwd(salt, 'ivan');
+            User.create({firstName:'Ivan',lastName:'Chan',username:'ivan', salt: salt, hashed_pwd: hash, roles: ['admin']});
             salt = createSalt();
-            hash = hashPwd(salt, 'john');
-            User.create({firstName:'John',lastName:'Papa',username:'john', salt: salt, hashed_pwd: hash});
+            hash = hashPwd(salt, 'holy');
+            User.create({firstName:'Holy',lastName:'Molly',username:'holy', salt: salt, hashed_pwd: hash, roles: []});
             salt = createSalt();
             hash = hashPwd(salt, 'dan');
             User.create({firstName:'Dan',lastName:'Wahlin',username:'dan', salt: salt, hashed_pwd: hash});
-          }
-    })
-    
+        }
+    })   
 }
 
 // Ask crypo module to give random bytes
