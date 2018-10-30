@@ -1,7 +1,7 @@
 const express = require('express');
 
 // set develop env
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 const app = express();
 
