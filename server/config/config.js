@@ -10,6 +10,6 @@ module.exports = {
     production: {
       rootPath: rootPath,
       db: 'mongodb://kskks:jcu1s23@18.218.105.153:27017/meanapplication',
-      port: process.env.PORT || 80
+      port: process.env.PORT || 3000
     }
   }
