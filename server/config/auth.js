@@ -1,6 +1,9 @@
 const passport = require('passport');
 
 exports.authenicate = function(req, res, next) {
+    // make user user login in lowercase
+    req.body.username = req.body.username.toLowerCase();
+
     var auth = passport.authenticate('local', function(err, user) {
         if(err) {return next(err);}
 
