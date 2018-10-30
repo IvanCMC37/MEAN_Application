@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-    encrypt = require('../Utilities/encryption');
+    userModel = require('../models/User');
 
 module.exports =function(config){
     // connect to mongodb
@@ -10,35 +10,5 @@ module.exports =function(config){
         console.log('meanApplication db opened');
     });
 
-    var userSchema = mongoose.Schema({
-        firstName: String,
-        lastName: String,
-        username: String,
-        salt: String,
-        hashed_pwd: String,
-        roles: [String]
-    });
-
-    userSchema.methods = {
-        authenticate: function(passwordToMatch) {
-          return encrypt.hashPwd(this.salt, passwordToMatch) === this.hashed_pwd;
-        }
-    };
-
-    var User = mongoose.model('User', userSchema);
-    
-    User.find({}).exec(function(err, collection) {
-        if(collection.length === 0) {
-            var salt, hash;
-            salt = encrypt.createSalt();
-            hash = encrypt.hashPwd(salt, 'ivan');
-            User.create({firstName:'Ivan',lastName:'Chan',username:'ivan', salt: salt, hashed_pwd: hash, roles: ['admin']});
-            salt = encrypt.createSalt();
-            hash = encrypt.hashPwd(salt, 'holy');
-            User.create({firstName:'Holy',lastName:'Molly',username:'holy', salt: salt, hashed_pwd: hash, roles: []});
-            salt = encrypt.createSalt();
-            hash = encrypt.hashPwd(salt, 'dan');
-            User.create({firstName:'Dan',lastName:'Wahlin',username:'dan', salt: salt, hashed_pwd: hash});
-        }
-    })   
+    userModel.createDefaultUsers();
 }
