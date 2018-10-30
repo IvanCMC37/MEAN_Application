@@ -1,5 +1,5 @@
-angular.module('app').controller('mvCourseListCtrl', function($scope, mvCourse) {
-    $scope.courses = mvCourse.query();
+angular.module('app').controller('mvCourseListCtrl', function($scope, mvCachedCourses) {
+    $scope.courses = mvCachedCourses.query();
 
     // define sort order
     $scope.sortOptions = [{value:"title",text: "Sort by Title"},
