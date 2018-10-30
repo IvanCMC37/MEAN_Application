@@ -15,4 +15,26 @@ exports.authenicate = function(req, res, next) {
 
     // call the auth function now - XHR post
     auth(req, res, next);
-}
+};
+
+exports.requireApiLogin = function(req, res, next) {
+    if(!req.isAuthenticated()) {
+        res.status(403);
+        res.end();
+    } else {
+        next();
+    }
+};
+
+// module to check user role
+exports.requiresRole = function(role) {
+    return function(req, res, next) {
+        // if it's not authenticated and have role of admin
+        if(!req.isAuthenticated() || req.user.roles.indexOf(role) === -1) {
+            res.status(403);
+            res.end();
+        } else {
+            next();
+        }
+    }
+};
