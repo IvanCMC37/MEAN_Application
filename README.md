@@ -54,4 +54,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Inspiration - MEAN Stack tutorial from [Pluralsight]https://app.pluralsight.com/library/
+* Inspiration - MEAN Stack tutorial from [Pluralsight](https://app.pluralsight.com/library/)
