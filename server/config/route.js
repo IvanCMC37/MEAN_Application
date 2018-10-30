@@ -21,6 +21,10 @@ module.exports =function(app){
         res.end();
     });
 
+    app.all('/api/*', function(req, res) {
+        res.send(404);
+    });
+
     // route for webpage
     app.get('*', function(req, res) {
         res.render('index',  {
