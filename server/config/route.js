@@ -8,6 +8,12 @@ module.exports =function(app){
     
     app.post('/login', auth.authenicate );
 
+    // use function form passport module
+    app.post('/logout', function(req, res) {
+        req.logout();
+        res.end();
+    });
+
     // route for webpage
     app.get('*', function(req, res) {
         res.render('index');

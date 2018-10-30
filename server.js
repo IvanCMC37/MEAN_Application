@@ -1,5 +1,6 @@
 const express = require('express'),
         passport = require('passport'),
+        mongoose = require('mongoose'),
         LocalStrategy = require('passport-local').Strategy;
 
 // set develop env
@@ -20,7 +21,7 @@ passport.use(new LocalStrategy(
     // done is callback
     function(username, password, done) {
       User.findOne({username:username}).exec(function(err, user) {
-        if(user) {
+        if(user&& user.authenticate(password)) {
           return done(null, user);
         } else {
           return done(null, false);
