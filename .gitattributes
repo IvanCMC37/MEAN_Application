@@ -1,4 +1,3 @@
-node_modules/* linguist-vendored
-public/vendor/* linguist-vendored
-public/css/bootstrap.css linguist-vendored
-*.css linguist-vendored
+node_modules/* linguist-generated=true
+public/vendor/* linguist-generated=true
+public/css/bootstrap.css linguist-generated=true
