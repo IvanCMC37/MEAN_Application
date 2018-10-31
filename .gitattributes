@@ -1,3 +1,1 @@
-node_modules/* linguist-generated=true
-public/vendor/* linguist-generated=true
-public/css/bootstrap.css linguist-generated=true
+*.css linguist-generated=true
